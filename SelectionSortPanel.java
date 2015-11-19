@@ -8,9 +8,14 @@ public class SelectionSortPanel extends SortPanel {
 	private int redColumn = -1;
 	private int blueColumn = -1;
 	private int greenColumn = -1;
+//********
+	private long startTime;
+	private long estimatedTime;
+	private double estimatedTimeInSeconds;
 	
 	public SelectionSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -50,6 +55,13 @@ public class SelectionSortPanel extends SortPanel {
 			greenColumn++;
 			redColumn = -1;
 			blueColumn = -1;
+
+//********
+			estimatedTime = System.nanoTime() - startTime;
+			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+			System.out.print("\nTime in seconds for Selection Sort: " + estimatedTimeInSeconds);
+			startTime = System.nanoTime();
+
 		} catch (InterruptedException e) {
 		}
 		repaint();

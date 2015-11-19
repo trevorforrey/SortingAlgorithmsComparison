@@ -7,9 +7,14 @@ public class BubbleSortPanel extends SortPanel {
 	private static final long serialVersionUID = 1L;
 	private int redColumn = -1;
 	private int greenColumn = -1;
+//********
+	private long startTime;
+	private long estimatedTime;
+	private double estimatedTimeInSeconds;
 	
 	public BubbleSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -42,6 +47,11 @@ public class BubbleSortPanel extends SortPanel {
 			}
 			greenColumn = 0;
 			redColumn = -1;
+//******
+			estimatedTime = System.nanoTime() - startTime;
+			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+			System.out.print("\nTime in seconds for Bubble: " + estimatedTimeInSeconds);
+			startTime = System.nanoTime();
 		} catch (InterruptedException e) {
 		}
 		repaint();

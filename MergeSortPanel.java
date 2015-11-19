@@ -1,4 +1,4 @@
-//package net.bohush.sorting;
+
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,9 +9,15 @@ public class MergeSortPanel extends SortPanel {
 	private int blueColumn = -1;
 	private int greenColumnStart = -1;
 	private int greenColumnFinish = -1;
+//********
+	private long startTime;
+	private long estimatedTime;
+	private double estimatedTimeInSeconds;
 	
 	public MergeSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+//********
+		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -28,6 +34,14 @@ public class MergeSortPanel extends SortPanel {
 			mergeSort(0, list.length - 1);
 			greenColumnStart = 0;
 			greenColumnFinish = size - 1;
+
+
+//*******
+		estimatedTime = System.nanoTime() - startTime;
+		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+		System.out.print("\nTime in seconds for Merge Sort: " + estimatedTimeInSeconds);
+		startTime = System.nanoTime();
+
 		} catch (InterruptedException e) {
 		}
 		repaint();

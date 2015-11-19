@@ -1,5 +1,5 @@
 
-
+import java.util.*;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,10 +12,17 @@ public class HeapSortPanel extends SortPanel {
 	private int greenColumn = -1;
 	// Creates a new heaplist based on an array list
 	private java.util.ArrayList<Integer> heapList = new java.util.ArrayList<Integer>();
+//********
+	private long startTime;
+	private long estimatedTime;
+	private double estimatedTimeInSeconds;
 	
 	// Heap Sort Panel Constructor
 	public HeapSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+//********
+		startTime = System.nanoTime();
+		System.out.println(startTime);
 	}
 
 	// Puts red and green column back to unseen values
@@ -47,6 +54,12 @@ public class HeapSortPanel extends SortPanel {
 				repaint();
 				Thread.sleep(sleepTime);
 			}
+//********
+			estimatedTime = System.nanoTime() - startTime;
+			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+			System.out.print("\nTime in seconds for Heap: " + estimatedTimeInSeconds);
+			startTime = System.nanoTime();
+
 		} catch (InterruptedException e) {
 		}
 		repaint();
@@ -74,7 +87,6 @@ public class HeapSortPanel extends SortPanel {
 			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - heapList.get(i) * columnHeight - 2 * BORDER_WIDTH, columnWidth, heapList.get(i) * columnHeight);			
 		}
 		
-
 		// If the greenColumn exists, paint it green
 		if(greenColumn != -1) {
 			for (int i = greenColumn; i < size; i++) {
@@ -92,6 +104,7 @@ public class HeapSortPanel extends SortPanel {
 			g.setColor(Color.BLACK);
 			g.drawRect(2 * BORDER_WIDTH + columnWidth * redColumn, getHeight() - heapList.get(redColumn) * columnHeight - 2 * BORDER_WIDTH, columnWidth, heapList.get(redColumn) * columnHeight);
 		}
+		
 	}
 	
 
@@ -128,8 +141,11 @@ public class HeapSortPanel extends SortPanel {
 	/** Remove the root from the heap 
 	 * @throws InterruptedException */
 	public void removeAndShow(int showIndex) throws InterruptedException {
-		if (heapList.size() == 0)
+
+		if (heapList.size() == 0) {
 			return;
+		}
+
 		repaint();
 		Thread.sleep(4 * sleepTime);
 		Integer removedObject = heapList.get(0);

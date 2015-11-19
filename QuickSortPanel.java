@@ -9,9 +9,14 @@ public class QuickSortPanel extends SortPanel {
 	private int blueColumn = -1;
 	private int cyanColumn = -1;
 	private int greenColumn = -1;
+//********
+	private long startTime;
+	private long estimatedTime;
+	private double estimatedTimeInSeconds;
 	
 	public QuickSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -28,6 +33,12 @@ public class QuickSortPanel extends SortPanel {
 			quicksort(0, list.length - 1);			
 		} catch (InterruptedException e) {
 		}
+//*******
+		estimatedTime = System.nanoTime() - startTime;
+		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+		System.out.print("\nTime in seconds for Quick Sort: " + estimatedTimeInSeconds);
+		startTime = System.nanoTime();
+
 		redColumn = -1;
 		blueColumn = -1;
 		cyanColumn = -1;
