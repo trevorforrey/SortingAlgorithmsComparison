@@ -20,9 +20,6 @@ public class HeapSortPanel extends SortPanel {
 	// Heap Sort Panel Constructor
 	public HeapSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
-//********
-		startTime = System.nanoTime();
-		System.out.println(startTime);
 	}
 
 	// Puts red and green column back to unseen values
@@ -38,6 +35,10 @@ public class HeapSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
+
+//********
+			startTime = System.nanoTime();
+			System.out.println(startTime);
 
 			// Add elements to the heap
 			for (int i = 0; i < list.length; i++) {

@@ -14,7 +14,6 @@ public class BubbleSortPanel extends SortPanel {
 	
 	public BubbleSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
-		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -26,6 +25,10 @@ public class BubbleSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
+
+//******
+			startTime = System.nanoTime();
+
 			boolean needNextPass = true;
 			for (int k = 1; k < list.length && needNextPass; k++) {
 				needNextPass = false;

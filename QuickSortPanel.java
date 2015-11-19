@@ -16,7 +16,6 @@ public class QuickSortPanel extends SortPanel {
 	
 	public QuickSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
-		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -30,6 +29,10 @@ public class QuickSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
+
+//******
+			startTime = System.nanoTime();
+
 			quicksort(0, list.length - 1);			
 		} catch (InterruptedException e) {
 		}

@@ -50,7 +50,7 @@ public class Main extends JApplet {
 	class SortPanelsHolder extends JPanel {
 		private static final long serialVersionUID = 1L;
 
-		// ****
+		// Paints the Sort Panels
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);

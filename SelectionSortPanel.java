@@ -15,7 +15,6 @@ public class SelectionSortPanel extends SortPanel {
 	
 	public SelectionSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
-		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -28,6 +27,10 @@ public class SelectionSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
+
+//*******
+			startTime = System.nanoTime();
+
 			for (int i = 0; i < list.length - 1; i++) {
 				int currentMinIndex = i;
 				redColumn = currentMinIndex;

@@ -16,8 +16,6 @@ public class MergeSortPanel extends SortPanel {
 	
 	public MergeSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
-//********
-		startTime = System.nanoTime();
 	}
 
 	@Override
@@ -31,6 +29,10 @@ public class MergeSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
+
+//********
+			startTime = System.nanoTime();
+
 			mergeSort(0, list.length - 1);
 			greenColumnStart = 0;
 			greenColumnFinish = size - 1;
@@ -40,7 +42,6 @@ public class MergeSortPanel extends SortPanel {
 		estimatedTime = System.nanoTime() - startTime;
 		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 		System.out.print("\nTime in seconds for Merge Sort: " + estimatedTimeInSeconds);
-		startTime = System.nanoTime();
 
 		} catch (InterruptedException e) {
 		}
