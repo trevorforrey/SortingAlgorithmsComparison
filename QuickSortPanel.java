@@ -1,7 +1,7 @@
-//package net.bohush.sorting;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.*;
 
 public class QuickSortPanel extends SortPanel {
 	private static final long serialVersionUID = 1L;
@@ -9,13 +9,26 @@ public class QuickSortPanel extends SortPanel {
 	private int blueColumn = -1;
 	private int cyanColumn = -1;
 	private int greenColumn = -1;
-//********
+	
+	//For timing how long the algorithm takes
 	private long startTime;
 	private long estimatedTime;
 	private double estimatedTimeInSeconds;
+
+	// For writing to the time log file
+	private FileWriter file;
+	private PrintWriter writer;
 	
 	public QuickSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		try {
+			file = new FileWriter("TimeLogs/quickTimes.txt");
+			writer = new PrintWriter(file);
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
 	}
 
 	@Override
@@ -40,7 +53,9 @@ public class QuickSortPanel extends SortPanel {
 		estimatedTime = System.nanoTime() - startTime;
 		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 		System.out.print("\nTime in seconds for Quick Sort: " + estimatedTimeInSeconds);
-		startTime = System.nanoTime();
+		writer.println("Quick Sort Time: " + estimatedTimeInSeconds);
+		writer.flush();
+		//startTime = System.nanoTime();
 
 		redColumn = -1;
 		blueColumn = -1;

@@ -1,0 +1,4 @@
+Heap time: 12.027361906
+Heap time: 9.950701309
+Heap time: 9.939699429
+Heap time: 19.048624369

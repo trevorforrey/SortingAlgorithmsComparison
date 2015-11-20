@@ -1,0 +1,4 @@
+Bubble time: 67.155992796
+Bubble time: 59.423055752
+Bubble time: 91.601738126
+Bubble time: 34.30846195

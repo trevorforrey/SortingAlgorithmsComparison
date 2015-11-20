@@ -1,0 +1,4 @@
+Quick Sort Time: 6.915779963
+Quick Sort Time: 3.512926418
+Quick Sort Time: 4.385292935
+Quick Sort Time: 4.895263606

@@ -2,6 +2,7 @@
 import java.util.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.*;
 
 // Heap Sort Panel
 public class HeapSortPanel extends SortPanel {
@@ -12,14 +13,29 @@ public class HeapSortPanel extends SortPanel {
 	private int greenColumn = -1;
 	// Creates a new heaplist based on an array list
 	private java.util.ArrayList<Integer> heapList = new java.util.ArrayList<Integer>();
-//********
+
+	//For timing how long the algorithm takes
 	private long startTime;
 	private long estimatedTime;
 	private double estimatedTimeInSeconds;
+
+	// For writing to the time log file
+	private FileWriter file;
+	private PrintWriter writer;
 	
 	// Heap Sort Panel Constructor
 	public HeapSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		try {
+			file = new FileWriter("TimeLogs/heapTimes.txt");
+			writer = new PrintWriter(file);
+			System.out.println("File Captured");
+
+		} catch (IOException e) {
+				System.out.println("ERROR");
+		}
+
 	}
 
 	// Puts red and green column back to unseen values
@@ -37,6 +53,7 @@ public class HeapSortPanel extends SortPanel {
 		try {
 
 //********
+			
 			startTime = System.nanoTime();
 			System.out.println(startTime);
 
@@ -59,7 +76,9 @@ public class HeapSortPanel extends SortPanel {
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 			System.out.print("\nTime in seconds for Heap: " + estimatedTimeInSeconds);
-			startTime = System.nanoTime();
+			writer.println("Heap time: " + estimatedTimeInSeconds);
+			writer.flush();
+			//startTime = System.nanoTime();
 
 		} catch (InterruptedException e) {
 		}

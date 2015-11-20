@@ -1,5 +1,5 @@
-//package net.bohush.sorting;
 
+import java.io.*;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -7,13 +7,26 @@ public class BubbleSortPanel extends SortPanel {
 	private static final long serialVersionUID = 1L;
 	private int redColumn = -1;
 	private int greenColumn = -1;
-//********
+
+	//For timing how long the algorithm takes
 	private long startTime;
 	private long estimatedTime;
 	private double estimatedTimeInSeconds;
+
+	// For writing to the time log file
+	private FileWriter file;
+	private PrintWriter writer;
 	
 	public BubbleSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		try {
+			file = new FileWriter("TimeLogs/bubbleTimes.txt");
+			writer = new PrintWriter(file);
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
 	}
 
 	@Override
@@ -54,6 +67,8 @@ public class BubbleSortPanel extends SortPanel {
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 			System.out.print("\nTime in seconds for Bubble: " + estimatedTimeInSeconds);
+			writer.println("Bubble time: " + estimatedTimeInSeconds);
+			writer.flush();
 			startTime = System.nanoTime();
 		} catch (InterruptedException e) {
 		}

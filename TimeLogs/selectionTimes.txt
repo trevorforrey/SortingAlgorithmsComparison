@@ -1,0 +1,4 @@
+Selection time: 46.292809524
+Selection time: 46.119931671
+Selection time: 45.931321121
+Selection time: 45.678437564

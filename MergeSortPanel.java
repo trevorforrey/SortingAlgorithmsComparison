@@ -1,5 +1,5 @@
-
-
+import java.util.*;
+import java.io.*;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -9,13 +9,26 @@ public class MergeSortPanel extends SortPanel {
 	private int blueColumn = -1;
 	private int greenColumnStart = -1;
 	private int greenColumnFinish = -1;
-//********
+	
+	//For timing how long the algorithm takes
 	private long startTime;
 	private long estimatedTime;
 	private double estimatedTimeInSeconds;
+
+	// For writing to the time log file
+	private FileWriter file;
+	private PrintWriter writer;
 	
 	public MergeSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		try {
+			file = new FileWriter("TimeLogs/mergeTimes.txt");
+			writer = new PrintWriter(file);
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
 	}
 
 	@Override
@@ -42,6 +55,8 @@ public class MergeSortPanel extends SortPanel {
 		estimatedTime = System.nanoTime() - startTime;
 		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 		System.out.print("\nTime in seconds for Merge Sort: " + estimatedTimeInSeconds);
+		writer.println("Merge time: " + estimatedTimeInSeconds);
+		writer.flush();
 
 		} catch (InterruptedException e) {
 		}
