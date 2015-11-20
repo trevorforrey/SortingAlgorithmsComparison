@@ -1,5 +1,5 @@
 # SortingAlgorithmsComparison
-A visual comparison of various sorting algorithms, based on Viktor Bohush's "SortingAlgorithmAnimations" (https://github.com/vbohush/SortingAlgorithmAnimations). 
+A visual and analytical comparison of various sorting algorithms, based on Viktor Bohush's "SortingAlgorithmAnimations" (https://github.com/vbohush/SortingAlgorithmAnimations). 
 
 Created by: 
 Trevor Forrey
