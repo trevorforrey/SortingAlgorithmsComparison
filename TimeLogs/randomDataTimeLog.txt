@@ -1,0 +1,6 @@
+Order - Bubble, Heap, Merge, QuickSort, Selection
+0.592147921
+0.573612355
+0.429467383
+0.264211369
+0.433420649

@@ -76,7 +76,7 @@ public class SelectionSortPanel extends SortPanel {
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 			System.out.print("\nTime in seconds for Selection Sort: " + estimatedTimeInSeconds);
-			writer.println("Selection time: " + estimatedTimeInSeconds);
+			writer.println(""+estimatedTimeInSeconds);
 			writer.flush();
 			startTime = System.nanoTime();
 

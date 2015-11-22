@@ -52,11 +52,11 @@ public class MergeSortPanel extends SortPanel {
 
 
 //*******
-		estimatedTime = System.nanoTime() - startTime;
-		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
-		System.out.print("\nTime in seconds for Merge Sort: " + estimatedTimeInSeconds);
-		writer.println("Merge time: " + estimatedTimeInSeconds);
-		writer.flush();
+			estimatedTime = System.nanoTime() - startTime;
+			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
+			System.out.print("\nTime in seconds for Merge Sort: " + estimatedTimeInSeconds);
+			writer.println(""+estimatedTimeInSeconds);
+			writer.flush();
 
 		} catch (InterruptedException e) {
 		}

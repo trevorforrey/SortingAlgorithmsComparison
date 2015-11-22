@@ -6,14 +6,20 @@ import java.awt.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import java.util.*;
+import java.io.*;
+
 //Visualization and Comparison of Sorting Algorithms
 public class Main extends JApplet {
+
+	private FileWriter file;
+	private PrintWriter writer;
 
 	private static final long serialVersionUID = 1L;
 	// Creates array for each sorting algorithm panel
 	private SortPanel[] sortPanels = new SortPanel[5];
 	// Sets size of the list that will be ordered
-	private static int size = 100;
+	private static int size = 10;
 	private int sleepTime = 2;
 	private String animationName = "";
 
@@ -175,5 +181,161 @@ public class Main extends JApplet {
 		list[list.length - 1] = list.length / 2 + 1;
 		// Starts animation of sort panels going through an almost sorted list
 		main.beginAnimation("Almost Sorted", list);
+
+
+
+
+
+
+
+
+
+
+
+		System.out.println("Starting Calculations called");
+
+		double[] randomTimes = new double[5];
+		double[] fewUniqueTimes = new double[5];
+		double[] reversedTimes = new double[5];
+		double[] almostSortedTimes = new double[5];
+
+		double[] bubbleSortTimes = new double[4];
+		double[] heapSortTimes = new double[4];
+		double[] mergeSortTimes = new double[4];
+		double[] quickSortTimes = new double[4];
+		double[] selectionSortTimes = new double[4];
+
+		File bubbleTimes = new File("TimeLogs/bubbleTimes.txt");
+		File heapTimes = new File("TimeLogs/heapTimes.txt");
+		File mergeTimes = new File("TimeLogs/mergeTimes.txt");
+		File quickTimes = new File("TimeLogs/quickTimes.txt");
+		File selectionTimes = new File("TimeLogs/selectionTimes.txt");
+
+		try {
+			Scanner bubbleScanner = new Scanner(new File("TimeLogs/bubbleTimes.txt"));
+			for (int i = 0; i < bubbleSortTimes.length; i++) {
+				bubbleSortTimes[i] = bubbleScanner.nextDouble();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			Scanner heapScanner = new Scanner(new File("TimeLogs/heapTimes.txt"));
+			for (int i = 0; i < heapSortTimes.length; i++) {
+				heapSortTimes[i] = heapScanner.nextDouble();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try{
+			Scanner mergeScanner = new Scanner(new File("TimeLogs/mergeTimes.txt"));
+			for (int i = 0; i < mergeSortTimes.length; i++) {
+				mergeSortTimes[i] = mergeScanner.nextDouble();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try{
+			Scanner quickScanner = new Scanner(new File("TimeLogs/quickTimes.txt"));
+			for (int i = 0; i < quickSortTimes.length; i++) {
+				quickSortTimes[i] = quickScanner.nextDouble();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try{
+			Scanner selectionScanner = new Scanner(new File("TimeLogs/selectionTimes.txt"));
+			for (int i = 0; i < selectionSortTimes.length; i++) {
+				selectionSortTimes[i] = selectionScanner.nextDouble();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+
+		randomTimes[0] = bubbleSortTimes[0];
+		randomTimes[1] = heapSortTimes[0];
+		randomTimes[2] = mergeSortTimes[0];
+		randomTimes[3] = quickSortTimes[0];
+		randomTimes[4] = selectionSortTimes[0];
+
+		fewUniqueTimes[0] = bubbleSortTimes[1];
+		fewUniqueTimes[1] = heapSortTimes[1];
+		fewUniqueTimes[2] = mergeSortTimes[1];
+		fewUniqueTimes[3] = quickSortTimes[1];
+		fewUniqueTimes[4] = selectionSortTimes[1];
+
+		reversedTimes[0] = bubbleSortTimes[2];
+		reversedTimes[1] = heapSortTimes[2];
+		reversedTimes[2] = mergeSortTimes[2];
+		reversedTimes[3] = quickSortTimes[2];
+		reversedTimes[4] = selectionSortTimes[2];
+
+		almostSortedTimes[0] = bubbleSortTimes[3];
+		almostSortedTimes[1] = heapSortTimes[3];
+		almostSortedTimes[2] = mergeSortTimes[3];
+		almostSortedTimes[3] = quickSortTimes[3];
+		almostSortedTimes[4] = selectionSortTimes[3];
+
+		try {
+			FileWriter file = new FileWriter("TimeLogs/randomDataTimeLog.txt");
+			PrintWriter writer = new PrintWriter(file);
+			writer.println("Order - Bubble, Heap, Merge, QuickSort, Selection");
+
+			for (int i = 0; i < randomTimes.length; i++) {
+				writer.println("" + randomTimes[i]);
+				writer.flush();
+			}
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+		try {
+			FileWriter file = new FileWriter("TimeLogs/fewUniqueTimeLog.txt");
+			PrintWriter writer = new PrintWriter(file);
+			writer.println("Order - Bubble, Heap, Merge, QuickSort, Selection");
+
+			for (int i = 0; i < fewUniqueTimes.length; i++) {
+				writer.println("" + fewUniqueTimes[i]);
+				writer.flush();
+			}
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+		try {
+			FileWriter file = new FileWriter("TimeLogs/almostSortedTimeLog.txt");
+			PrintWriter writer = new PrintWriter(file);
+			writer.println("Order - Bubble, Heap, Merge, QuickSort, Selection");
+
+			for (int i = 0; i < almostSortedTimes.length; i++) {
+				writer.println("" + almostSortedTimes[i]);
+				writer.flush();
+			}
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+		try {
+			FileWriter file = new FileWriter("TimeLogs/reversedTimeLog.txt");
+			PrintWriter writer = new PrintWriter(file);
+			writer.println("Order - Bubble, Heap, Merge, QuickSort, Selection");
+
+			for (int i = 0; i < reversedTimes.length; i++) {
+				writer.println("" + reversedTimes[i]);
+				writer.flush();
+			}
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
 	}
 }

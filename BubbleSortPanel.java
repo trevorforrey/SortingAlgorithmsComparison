@@ -67,7 +67,7 @@ public class BubbleSortPanel extends SortPanel {
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 			System.out.print("\nTime in seconds for Bubble: " + estimatedTimeInSeconds);
-			writer.println("Bubble time: " + estimatedTimeInSeconds);
+			writer.println(""+estimatedTimeInSeconds);
 			writer.flush();
 			startTime = System.nanoTime();
 		} catch (InterruptedException e) {

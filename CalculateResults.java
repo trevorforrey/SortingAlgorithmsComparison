@@ -1,13 +1,9 @@
 /**
 import java.util.*;
 import java.io.*;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.*;
-import javax.swing.*;
 
 // Panel that displays results of the algorithm's sorting runs
-public class ResultsPanel extends JPanel {
+public class CalculateResults {
 
 	private double[] randomTimes;
 	private double[] fewUniqueTimes;
@@ -32,7 +28,12 @@ public class ResultsPanel extends JPanel {
 	private Scanner quickScanner;
 	private Scanner selectionScanner;
 
-	ResultsPanel() {
+	private FileWriter file;
+	private PrintWriter writer;
+
+	CalculateResults() {
+
+		System.out.println("Starting Calculations called");
 
 		randomTimes = new double[4];
 		fewUniqueTimes = new double[4];
@@ -52,31 +53,31 @@ public class ResultsPanel extends JPanel {
 		selectionTimes = new File("TimeLogs/selectionTimes.txt");
 
 		try {
-			bubbleScanner = new Scanner(bubbleTimes);
+			bubbleScanner = new Scanner(new File("TimeLogs/bubbleTimes.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			heapScanner = new Scanner(heapTimes);
+			heapScanner = new Scanner(new File("TimeLogs/heapTimes.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		try{
-			mergeScanner = new Scanner(mergeTimes);
+			mergeScanner = new Scanner(new File("TimeLogs/mergeTimes.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		try{
-			quickScanner = new Scanner(quickTimes);
+			quickScanner = new Scanner(new File("TimeLogs/quickTimes.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		try{
-			selectionScanner = new Scanner(selectionTimes);
+			selectionScanner = new Scanner(new File("TimeLogs/selectionTimes.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -104,6 +105,7 @@ public class ResultsPanel extends JPanel {
 		}
 
 		randomTimes[0] = bubbleSortTimes[0];
+		System.out.println("\n\n" + randomTimes[0] + "\n\n");
 		randomTimes[1] = heapSortTimes[0];
 		randomTimes[2] = mergeSortTimes[0];
 		randomTimes[3] = quickSortTimes[0];
@@ -127,18 +129,48 @@ public class ResultsPanel extends JPanel {
 		almostSortedTimes[3] = quickSortTimes[3];
 		almostSortedTimes[4] = selectionSortTimes[3];
 
+		try {
+			file = new FileWriter("TimeLogs/randomDataTimeLog.txt");
+			writer = new PrintWriter(file);
+			writer.println("Order\nBubble, Heap, Merge, QuickSort, Selection");
 
-		JLabel quickLabel = new JLabel("Quick Sort Times");
-		quickLabel.setForeground(Color.WHITE);
-		this.add(quickLabel);
+			for (int i = 0; i < randomTimes.length; i++) {
+				writer.println("" + randomTimes[i]);
+				writer.flush();
+			}
 
-		for (int i = 0; i < quickSortTimes.length; i++) {
-			JLabel tempLabel = new JLabel("" + (i+1) + " : " + quickSortTimes[i]);
-			tempLabel.setForeground(Color.WHITE);
-			this.add(tempLabel);
+		} catch (IOException e) {
+			System.out.println("ERROR");
 		}
-		
-      	setVisible(true);          // "this" JFrame shows
+
+		try {
+			file = new FileWriter("TimeLogs/fewUniqueTimeLog.txt");
+			writer = new PrintWriter(file);
+			writer.println("Order\nBubble, Heap, Merge, QuickSort, Selection");
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+		try {
+			file = new FileWriter("TimeLogs/almostSortedTimeLog.txt");
+			writer = new PrintWriter(file);
+			writer.println("Order\nBubble, Heap, Merge, QuickSort, Selection");
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+		try {
+			file = new FileWriter("TimeLogs/reversedTimeLog.txt");
+			writer = new PrintWriter(file);
+			writer.println("Order\nBubble, Heap, Merge, QuickSort, Selection");
+
+		} catch (IOException e) {
+			System.out.println("ERROR");
+		}
+
+
 	}
 
 }

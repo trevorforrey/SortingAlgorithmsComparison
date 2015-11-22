@@ -53,7 +53,7 @@ public class QuickSortPanel extends SortPanel {
 		estimatedTime = System.nanoTime() - startTime;
 		estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 		System.out.print("\nTime in seconds for Quick Sort: " + estimatedTimeInSeconds);
-		writer.println("Quick Sort Time: " + estimatedTimeInSeconds);
+		writer.println(""+estimatedTimeInSeconds);
 		writer.flush();
 		//startTime = System.nanoTime();
 
