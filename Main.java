@@ -212,48 +212,123 @@ public class Main extends JApplet {
 		File selectionTimes = new File("TimeLogs/selectionTimes.txt");
 
 		try {
+
+			double totalTime = 0;
 			Scanner bubbleScanner = new Scanner(new File("TimeLogs/bubbleTimes.txt"));
+
 			for (int i = 0; i < bubbleSortTimes.length; i++) {
+				String dataArrangementType = bubbleScanner.next();
 				bubbleSortTimes[i] = bubbleScanner.nextDouble();
+				totalTime += bubbleSortTimes[i];
 			}
-		} catch (FileNotFoundException e) {
+
+			double average = totalTime / 4;
+
+			FileWriter file = new FileWriter("TimeLogs/bubbleTimes.txt", true);
+			PrintWriter writer = new PrintWriter(file);
+
+			writer.println("\nAverage Time: " + average);
+			writer.flush();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("bubble scanner error");
 		}
+
 
 		try {
+
+			double totalTime = 0;
 			Scanner heapScanner = new Scanner(new File("TimeLogs/heapTimes.txt"));
 			for (int i = 0; i < heapSortTimes.length; i++) {
+				String dataArrangementType = heapScanner.next();
 				heapSortTimes[i] = heapScanner.nextDouble();
+				totalTime += heapSortTimes[i];
 			}
-		} catch (FileNotFoundException e) {
+
+			double average = totalTime / 4;
+
+			FileWriter file = new FileWriter("TimeLogs/heapTimes.txt", true);
+			PrintWriter writer = new PrintWriter(file);
+
+			writer.println("\nAverage Time: " + average);
+			writer.flush();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("heap scanner error");
 		}
 
+
 		try{
+
+			double totalTime = 0;
 			Scanner mergeScanner = new Scanner(new File("TimeLogs/mergeTimes.txt"));
 			for (int i = 0; i < mergeSortTimes.length; i++) {
+				String dataArrangementType = mergeScanner.next();
 				mergeSortTimes[i] = mergeScanner.nextDouble();
+				totalTime += mergeSortTimes[i];
 			}
-		} catch (FileNotFoundException e) {
+
+			double average = totalTime / 4;
+
+			FileWriter file = new FileWriter("TimeLogs/mergeTimes.txt", true);
+			PrintWriter writer = new PrintWriter(file);
+
+			writer.println("\nAverage Time: " + average);
+			writer.flush();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("merge scanner error");
 		}
 
+
 		try{
+
+			double totalTime = 0;
 			Scanner quickScanner = new Scanner(new File("TimeLogs/quickTimes.txt"));
 			for (int i = 0; i < quickSortTimes.length; i++) {
+				String dataArrangementType = quickScanner.next();
 				quickSortTimes[i] = quickScanner.nextDouble();
+				totalTime += quickSortTimes[i];
 			}
-		} catch (FileNotFoundException e) {
+
+			double average = totalTime / 4;
+
+			FileWriter file = new FileWriter("TimeLogs/quickTimes.txt", true);
+			PrintWriter writer = new PrintWriter(file);
+
+			writer.println("\nAverage Time: " + average);
+			writer.flush();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("quick scanner error");
 		}
 
+
 		try{
+
+			double totalTime = 0;
 			Scanner selectionScanner = new Scanner(new File("TimeLogs/selectionTimes.txt"));
 			for (int i = 0; i < selectionSortTimes.length; i++) {
+				String dataArrangementType = selectionScanner.next();
 				selectionSortTimes[i] = selectionScanner.nextDouble();
+				totalTime += selectionSortTimes[i];
 			}
-		} catch (FileNotFoundException e) {
+
+			double average = totalTime / 4;
+
+			FileWriter file = new FileWriter("TimeLogs/selectionTimes.txt", true);
+			PrintWriter writer = new PrintWriter(file);
+
+			writer.println("\nAverage Time: " + average);
+			writer.flush();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("selection scanner error");
 		}
 
 

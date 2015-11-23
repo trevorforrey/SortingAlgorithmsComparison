@@ -16,9 +16,15 @@ public class BubbleSortPanel extends SortPanel {
 	// For writing to the time log file
 	private FileWriter file;
 	private PrintWriter writer;
+
+	private String[] listOfDataArrangement;
+	private int currentTypeOfCollection;
 	
 	public BubbleSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
+		currentTypeOfCollection = 0;
 
 		try {
 			file = new FileWriter("TimeLogs/bubbleTimes.txt");
@@ -66,10 +72,13 @@ public class BubbleSortPanel extends SortPanel {
 //******
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
-			System.out.print("\nTime in seconds for Bubble: " + estimatedTimeInSeconds);
-			writer.println(""+estimatedTimeInSeconds);
+			if (currentTypeOfCollection != 0) {
+				writer.print("\n" + listOfDataArrangement[currentTypeOfCollection] + " \n" + estimatedTimeInSeconds);
+			} else {
+				writer.print("" + listOfDataArrangement[currentTypeOfCollection] + " \n" + estimatedTimeInSeconds);
+			}
 			writer.flush();
-			startTime = System.nanoTime();
+			currentTypeOfCollection++;
 		} catch (InterruptedException e) {
 		}
 		repaint();
