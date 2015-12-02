@@ -31,6 +31,8 @@ public class HeapSortPanel extends SortPanel {
 	public HeapSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
 
+		System.out.println("Heap Called");
+
 		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
 		currentTypeOfCollection = 0;
 
@@ -58,28 +60,32 @@ public class HeapSortPanel extends SortPanel {
 	@Override
 	public void run() {
 		try {
-
-//********
 			
+			// Finds and Prints the current system time in nanoseconds
 			startTime = System.nanoTime();
 			System.out.println(startTime);
 
-			// Add elements to the heap
+
+			// Adds elements to the heap
 			for (int i = 0; i < list.length; i++) {
 				add(list[i]);
 				repaint();
 				Thread.sleep(2 * sleepTime);				
 			}
 
-			// Remove elements from the heap
+			// Removes elements from the heap
 			greenColumn = size;
 			for (int i = list.length - 1; i >= 0; i--) {
+
 				// Removes and shows the last element in the heap structure
+				// Sorts through the remaining elements, bringing the largest to the top
 				removeAndShow(i);
 				repaint();
 				Thread.sleep(sleepTime);
 			}
-//********
+
+
+			// Calculates the amount of time taken to sort and writes it to the appropriate file
 			estimatedTime = System.nanoTime() - startTime;
 			estimatedTimeInSeconds = (double)estimatedTime / 1000000000;
 			if (currentTypeOfCollection != 0) {
@@ -95,6 +101,8 @@ public class HeapSortPanel extends SortPanel {
 		repaint();
 	}
 	
+
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -141,12 +149,15 @@ public class HeapSortPanel extends SortPanel {
 	/** Add a new object into the heap 
 	 * @throws InterruptedException */
 	public void add(Integer newObject) throws InterruptedException {
+
 		heapList.add(newObject); // Append to the heap
 		repaint();
 		Thread.sleep(3 * sleepTime);
 		int currentIndex = heapList.size() - 1; // The index of the last node
 		// red column is set to the currently processed index
 		redColumn = currentIndex;
+
+		// While the heap exists
 		while (currentIndex > 0) {
 			repaint();
 			Thread.sleep(3 * sleepTime);

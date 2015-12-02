@@ -19,12 +19,14 @@ public class Main extends JApplet {
 	// Creates array for each sorting algorithm panel
 	private SortPanel[] sortPanels = new SortPanel[5];
 	// Sets size of the list that will be ordered
-	private static int size = 10;
-	private int sleepTime = 2;
+	private static int size = 60;
+	private int sleepTime = 4;
 	private String animationName = "";
 
 	// Main Constructor
 	public Main() {
+
+		System.out.println("Main constructor called");
 		// Creates layout for the sort panels to go into
 		setLayout(new GridLayout(1, 1, 0, 0));
 		// Sets values for panels that will hold sorting algorithm animations
@@ -118,6 +120,7 @@ public class Main extends JApplet {
 	// Program that runs the Main class
 	public static void main(String[] args) {
 
+
 		// Sets up frame that will hold all Sorting Panels
 		JFrame frame = new JFrame("Sorting Algorithm Animations");
 		Main main = new Main();
@@ -131,7 +134,7 @@ public class Main extends JApplet {
 		// Initializes the size of the array that will be sorted
 		int[] list = new int[size];
 		
-		// Creates a list 1 - 99
+		// Creates a list 1 - (size - 1)
 		for (int i = 0; i < list.length; i++) {
 			list[i] = i + 1;
 		}
@@ -189,7 +192,7 @@ public class Main extends JApplet {
 
 
 
-
+		// All Time Data Calculations and Storage
 
 
 		System.out.println("Starting Calculations called");
@@ -211,6 +214,9 @@ public class Main extends JApplet {
 		File quickTimes = new File("TimeLogs/quickTimes.txt");
 		File selectionTimes = new File("TimeLogs/selectionTimes.txt");
 
+
+		// Puts all bubble times in the bubble array
+		// Calculates the total time spent sorting
 		try {
 
 			double totalTime = 0;
@@ -236,6 +242,8 @@ public class Main extends JApplet {
 		}
 
 
+		// Puts all heap times in the heap array
+		// Calculates the total time spent sorting
 		try {
 
 			double totalTime = 0;
@@ -260,6 +268,8 @@ public class Main extends JApplet {
 		}
 
 
+		// Puts all merge times in the merge array
+		// Calculates the total time spent sorting
 		try{
 
 			double totalTime = 0;
@@ -284,6 +294,8 @@ public class Main extends JApplet {
 		}
 
 
+		// Puts all quick times in the quick array
+		// Calculates the total time spent sorting
 		try{
 
 			double totalTime = 0;
@@ -308,6 +320,8 @@ public class Main extends JApplet {
 		}
 
 
+		// Puts all selection times in the selection array
+		// Calculates the total time spent sorting
 		try{
 
 			double totalTime = 0;
@@ -332,30 +346,40 @@ public class Main extends JApplet {
 		}
 
 
+		// Puts in random times of all algorithms into the randomTimes array
 		randomTimes[0] = bubbleSortTimes[0];
 		randomTimes[1] = heapSortTimes[0];
 		randomTimes[2] = mergeSortTimes[0];
 		randomTimes[3] = quickSortTimes[0];
 		randomTimes[4] = selectionSortTimes[0];
 
+		// Puts in few unique times of all algorithms into the fewUniqueTimes array
 		fewUniqueTimes[0] = bubbleSortTimes[1];
 		fewUniqueTimes[1] = heapSortTimes[1];
 		fewUniqueTimes[2] = mergeSortTimes[1];
 		fewUniqueTimes[3] = quickSortTimes[1];
 		fewUniqueTimes[4] = selectionSortTimes[1];
 
+		// Puts in reversed times of all algorithms into the reversedTimes array
 		reversedTimes[0] = bubbleSortTimes[2];
 		reversedTimes[1] = heapSortTimes[2];
 		reversedTimes[2] = mergeSortTimes[2];
 		reversedTimes[3] = quickSortTimes[2];
 		reversedTimes[4] = selectionSortTimes[2];
 
+		// Puts in almost sorted times of all algorithms into the almostSortedTimes array
 		almostSortedTimes[0] = bubbleSortTimes[3];
 		almostSortedTimes[1] = heapSortTimes[3];
 		almostSortedTimes[2] = mergeSortTimes[3];
 		almostSortedTimes[3] = quickSortTimes[3];
 		almostSortedTimes[4] = selectionSortTimes[3];
 
+
+
+		// All File Writing
+
+
+		// Random Times
 		try {
 			FileWriter file = new FileWriter("TimeLogs/randomDataTimeLog.txt");
 			PrintWriter writer = new PrintWriter(file);
@@ -370,6 +394,8 @@ public class Main extends JApplet {
 			System.out.println("ERROR");
 		}
 
+
+		// Few Unique Times
 		try {
 			FileWriter file = new FileWriter("TimeLogs/fewUniqueTimeLog.txt");
 			PrintWriter writer = new PrintWriter(file);
@@ -384,6 +410,8 @@ public class Main extends JApplet {
 			System.out.println("ERROR");
 		}
 
+
+		// Almost Sorted Times
 		try {
 			FileWriter file = new FileWriter("TimeLogs/almostSortedTimeLog.txt");
 			PrintWriter writer = new PrintWriter(file);
@@ -398,6 +426,8 @@ public class Main extends JApplet {
 			System.out.println("ERROR");
 		}
 
+
+		// Reversed Times
 		try {
 			FileWriter file = new FileWriter("TimeLogs/reversedTimeLog.txt");
 			PrintWriter writer = new PrintWriter(file);

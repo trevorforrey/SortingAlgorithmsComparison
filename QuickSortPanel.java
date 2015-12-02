@@ -25,6 +25,8 @@ public class QuickSortPanel extends SortPanel {
 	public QuickSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
 
+		System.out.println("Quick Called");
+
 		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
 		currentTypeOfCollection = 0;
 
@@ -49,6 +51,7 @@ public class QuickSortPanel extends SortPanel {
 	public void run() {
 		try {
 
+			System.out.println("Quick sort running");
 //******
 			startTime = System.nanoTime();
 

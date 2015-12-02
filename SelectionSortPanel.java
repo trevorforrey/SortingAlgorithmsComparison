@@ -24,6 +24,8 @@ public class SelectionSortPanel extends SortPanel {
 	public SelectionSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
 
+		System.out.println("Bubble Called");
+
 		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
 		currentTypeOfCollection = 0;
 

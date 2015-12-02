@@ -19,9 +19,15 @@ public class BubbleSortPanel extends SortPanel {
 
 	private String[] listOfDataArrangement;
 	private int currentTypeOfCollection;
+
+	private int runningCheck;
 	
 	public BubbleSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
+
+		System.out.println("Bubble Called");
+
+		runningCheck = 0;
 
 		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
 		currentTypeOfCollection = 0;
@@ -51,6 +57,10 @@ public class BubbleSortPanel extends SortPanel {
 			boolean needNextPass = true;
 			for (int k = 1; k < list.length && needNextPass; k++) {
 				needNextPass = false;
+				if (runningCheck % 1001 <= 99 && runningCheck % 1001 >= 91) {
+					System.out.println("Still Running: " + runningCheck);
+				}
+				runningCheck++;
 				for (int i = 0; i < list.length - k; i++) {
 					redColumn = i;
 					repaint();
@@ -86,6 +96,7 @@ public class BubbleSortPanel extends SortPanel {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+
 		super.paintComponent(g);
 		int columnWidth = (getWidth() - 4 * BORDER_WIDTH) / size;
 		int columnHeight = (getHeight() - 4 * BORDER_WIDTH) / size;

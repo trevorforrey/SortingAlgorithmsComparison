@@ -1,9 +1,2 @@
 Random 
-0.450564201
-FewUnique 
-0.439384001
-Reversed 
-0.425866318
-AlmostSorted 
-0.420380358
-Average Time: 0.4340487195
+31.328264702

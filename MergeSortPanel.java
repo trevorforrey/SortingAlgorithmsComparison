@@ -25,6 +25,8 @@ public class MergeSortPanel extends SortPanel {
 	public MergeSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
 
+		System.out.println("Merge Called");
+
 		listOfDataArrangement = new String[]{"Random", "FewUnique", "Reversed", "AlmostSorted"};
 		currentTypeOfCollection = 0;
 
